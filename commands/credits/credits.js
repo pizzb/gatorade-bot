@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const wait = require('node:timers/promises').setTimeout;
+const fs = require('fs');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -14,6 +15,6 @@ module.exports = {
 			.setName('work')
 			.setDescription('Work for credits')),
 	async execute(interaction) {
-		
+		// credits
 	},
 };
