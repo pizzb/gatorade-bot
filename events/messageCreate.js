@@ -1,10 +1,10 @@
 const { Events } = require('discord.js');
+const { inviteLink } = require('../config.json');
 
 const invitePhrases = ["invite", "server link", "discord link", "join link", "invite link", "how do i join"];
 const inviteResponses = [
     "here", "take it", "this the one", "here u go", "don't waste it", "link below", "slide in", "join up", "use this"
 ];
-const inviteLink = "https://discord.gg/dxrxBf8qk6";
 
 const thanksPhrases = ["thank", "thx", "thanks", "ty", "thank you", "appreciate it"];
 const thanksResponses = ["np", "no prob", "sure", "anytime", "don’t mention it", "ok", "yuh"];
