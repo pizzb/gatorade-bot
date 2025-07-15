@@ -35,7 +35,7 @@ module.exports = {
 		.addSubcommand(subcommand =>
 			subcommand
 				.setName('guard')
-				.setDescription('Slightly protect yourself from stealers for 6 hours')
+				.setDescription('Protect yourself from stealers for 30 minutes')
 		)
 		.addSubcommand(subcommand =>
 			subcommand
@@ -153,7 +153,7 @@ module.exports = {
 				}
 
 				DailyData.set(interaction.user.id, today)
-				var currentCredits = creditData.get(interaction.user.id)
+				var currentCredits = creditData.get(interaction.user.id) || 0
 
 				creditData.set(interaction.user.id, Number(Number(currentCredits) + 1000))
 
@@ -334,7 +334,7 @@ module.exports = {
 
 				var guardTime = guardData.get(target.id) || 0
 
-				var chance = Math.min((userCredits / (targetCredits * 0.5)), 1) * Math.min((targetCredits / (globalBank * 0.5)), 1)
+				var chance = Math.min((userCredits / (targetCredits * 0.8)), 1) * Math.min((targetCredits / (globalBank * 0.8)), 1)
 				if (target.bot) { chance = chance * 0.1 }
 				chance = Math.sqrt(chance)
 				if (currentUnix < guardTime) { chance = chance * 0.3 }
@@ -420,7 +420,7 @@ module.exports = {
 
 				var guardTime = guardData.get(target.id) || 0
 
-				var chance = Math.min((userCredits / (targetCredits * 0.5)), 1) * Math.min((targetCredits / (globalBank * 0.5)), 1)
+				var chance = Math.min((userCredits / (targetCredits * 0.8)), 1) * Math.min((targetCredits / (globalBank * 0.8)), 1)
 				if (target.bot) { chance = chance * 0.1 }
 				chance = Math.sqrt(chance)
 				if (currentUnix < guardTime) { chance = chance * 0.3 }
@@ -524,9 +524,9 @@ module.exports = {
 
 				await interaction.editReply({ content: ``, embeds: [embed], components: [ctme] })
 			} else if (subcom == "guard") {
-				guardData.set(interaction.user.id, Number(currentUnix) + 21600)
+				guardData.set(interaction.user.id, Number(currentUnix) + 3600)
 
-				await interaction.editReply({ content: `:shield: Your guard has been renewed and will last until it expires <t:${Number(currentUnix) + 21600}:R>` })
+				await interaction.editReply({ content: `:shield: Your guard has been renewed and will last until it expires <t:${Number(currentUnix) + 3600}:R>` })
 				//wip
 			} else {
 				await interaction.editReply({ content: `Sadly, that command doesn't work yet.` })
