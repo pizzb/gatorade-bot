@@ -441,7 +441,7 @@ module.exports = {
 
 				var guardWarning = ``
 				if (currentUnix < guardTime) {
-					guardWarning = `\n:shield: They currently have a **guard** that expires in <t:${guardTime}:R>`
+					guardWarning = `\n:shield: They currently have a **guard** that expires <t:${guardTime}:R>`
 				}
 
 				var botWarning = ``
